@@ -38,7 +38,7 @@ class ChatGPTBotAPI:
         return "Prompt deleted successfully."
 
 app = Flask(__name__)
-openai_api_key = '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'
+openai_api_key = 'ADD_YOUR_SECRET_KEY'
 bot_api = ChatGPTBotAPI(openai_api_key)
 bot_api.initialize_gpt3()
 
