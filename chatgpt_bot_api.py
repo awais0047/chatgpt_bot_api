@@ -5,16 +5,19 @@ class ChatGPTBotAPI:
     def __init__(self, openai_api_key):
         self.api_key = openai_api_key
         self.prompts = {}
-
+    
+    # Initialize the OpenAI API with your credentials
     def initialize_gpt3(self):
         openai.api_key = self.api_key
 
     def create_prompt(self, prompt):
+        #Storing prompt
         prompt_index = len(self.prompts)
         self.prompts[prompt_index] = prompt
         return prompt_index
 
     def get_response(self, prompt_index):
+        #Interacting with Chatgpt
         if prompt_index not in self.prompts:
             return "Prompt not found."
         prompt = self.prompts[prompt_index]
@@ -26,12 +29,14 @@ class ChatGPTBotAPI:
         return response.choices[0].text.strip()
 
     def update_prompt(self, prompt_index, new_prompt):
+        # updating propmt index
         if prompt_index not in self.prompts:
             return "Prompt not found."
         self.prompts[prompt_index] = new_prompt
         return "Prompt updated successfully."
 
     def delete_prompt(self, prompt_index):
+        # Deleteing index
         if prompt_index not in self.prompts:
             return "Prompt not found."
         del self.prompts[prompt_index]
